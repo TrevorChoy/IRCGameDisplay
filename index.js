@@ -37,8 +37,8 @@ const matchScheduleButton = document.getElementById("matchSchedule");
 const confirmAlliancesButton = document.getElementById("confirmAlliances");
 const startFinalMatchButton = document.getElementById("startFinalMatch");
 const resetAllianceSelectionButton = document.getElementById("resetAllianceSelection");
-const teleopLength = 1;//150
-const autoLength = 1;
+const teleopLength = 150;
+const autoLength = 15;
 const timeBtwnAutoTeleop = 1;
 let teamArray = [];
 let qmMatches = [];
@@ -305,13 +305,6 @@ newCompButton.addEventListener("click", function(){
 })
 
 addTeamButton.addEventListener("click", function(){
-    //testing
-    teamArray.push(new IRCTeam("RED"));
-    teamArray.push(new IRCTeam("ORANGE"));
-    teamArray.push(new IRCTeam("YELLOW"));
-    teamArray.push(new IRCTeam("GREEN"));
-    teamArray.push(new IRCTeam("BLUE"));
-    teamArray.push(new IRCTeam("PURPLE"));
     teamArray.push(new IRCTeam(teamInputField.value));
     console.log(teamArray);
     teamInputField.value = "";
