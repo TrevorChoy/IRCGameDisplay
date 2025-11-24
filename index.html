@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+    <link rel = "stylesheet" href = "styles.css">
+    <head>
+        <title>IRC 2025</title>
+        <link rel="icon" type="image/png" href="/images/favicon.png">
+    </head>
+    <body>
+        <div id = start>
+            <button id = "loadComp" type = "button"> Load Existing Comp</button>
+            <button id = "newComp" type = "button"> New Comp (overwrites the old one)</button>
+        </div>
+        <div id = "setup" style = "display:none">
+            <input type = "text" id = "numQMInputField" placeholder="Number of QMs"> 
+
+            <input type = "text" id = "teamInputField" placeholder = "Team Name">
+            <button id="addTeam" type = "button"> Add Team</button>
+
+            <div id = "list"></div> 
+
+            <button id = "startCompetition" type = "button"> Start Competition</button>
+        </div>
+
+        <div id = "QMDisplay" style = "display:none">
+            <h1>Rankings</h1>
+
+            <div class = sidebyside>
+                <div>
+                    <h1>Qualification Matches</h1>
+
+                    <div class = datatable>
+                        <span>Match</span>
+                        <span>Red 1</span>
+                        <span>Red 2</span>
+                        <span>Blue1</span>
+                        <span>Blue2</span>
+                        <span>Winner</span>
+                    </div> 
+                    <div id = "matchDiv">
+                    </div>
+                </div>
+
+                <div>
+                    <h1>Team Ranking</h1>
+                    <div class = datatable>
+                        <span>Rank</span>
+                        <span>Team</span>
+                        <span>AVG RP</span>
+                    </div> 
+                    <div id = "rankingsDiv"></div> 
+                </div>
+            </div>
+
+            <button id = "startQM" type = "button"> Start Next Match</button>
+        </div>
+
+        <div id = "allianceSelection" style = "display:none">
+            <h1>Alliance Selection</h1>
+            <div class = sidebyside>
+                <div class = "RedClass alliance">
+                    <h2>Red Alliance</h2>
+                    <h3 id = "finalRed1"></h3>
+                    <h3 id = "finalRed2"></h3>
+                    <br>
+                </div>
+
+                <div class = "BlueClass alliance">    
+                    <h2>Blue Alliance</h2>
+                    <h3 id = "finalBlue1"></h3>
+                    <h3 id = "finalBlue2"></h3>
+                    <br>
+                </div>
+            </div>
+
+            <div id = "selectionsDiv"></div> 
+
+            <button id = "resetAllianceSelection" class = "removeButton" type = "button"> Reset Alliance Selection</button>
+            <button id = "confirmAlliances" type = "button"> Confirm Alliances</button>
+        </div>
+
+        <div id = "finalsDisplay" style = "display:none">
+            <h1>Finals</h1>
+
+            <div class = sidebyside> 
+                <div class = "RedClass alliance">
+                    <h2>Red Alliance</h2>
+                    <h3 id = "finalRed1Display"></h3>
+                    <h3 id = "finalRed2Display"></h3>
+                    <br>
+                </div>
+
+                <div class = "BlueClass alliance">
+                    <h2>Blue Alliance</h2>
+                    <h3 id = "finalBlue1Display"></h3>
+                    <h3 id = "finalBlue2Display"></h3>
+                    <br>
+                </div>
+            </div>
+
+            <div class = datatable>
+                <span>Match</span>
+                <span>Red 1</span>
+                <span>Red 2</span>
+                <span>Blue1</span>
+                <span>Blue2</span>
+                <span>Winner</span>
+            </div> 
+            <div id = "finalMatchDiv"></div> 
+
+            <button id = "startFinalMatch" type = "button"> Start Next Match</button>
+        </div>
+
+        <div id = "endScreen" style = "display:none">
+            <div class = "sidebyside">
+                <div id = "winnerBox" class = "alliance">
+                    <h1 class = nobox>Winner</h1>
+                    <h2 id = "winningAlliance"></h2>
+                    <h3 id = "winner1"></h3>
+                    <h3 id = "winner2"></h3>
+                    <br>
+                </div>
+
+                <div id = "finalistBox" class = "alliance">
+                    <h1 class = nobox>Finalist</h1>
+                    <h2 id = "finalistAlliance"></h2>
+                    <h3 id = "finalist1"></h3>
+                    <h3 id = "finalist2"></h3>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div id = "playMatch" style = "display:none">
+            <h1 id = "matchTitle"> Match</h1>
+            <div id="timer" style="font-size: 3rem; font-family: monospace;">
+                0:00
+            </div>
+
+            <div class = sidebyside>
+                <div class = "RedClass alliance">
+                    <h2 id = "redAlliance"> Red Alliance</h2>
+                    <div class = sidebyside>
+                        <h3 id = "redAlliance1"> </h3>
+                        <h3 id = "redAlliance2"> </h3>
+                    </div>
+                    <h3 id = "redScore"> </h3>
+                    <p id = "redLeaveScore"> </p>
+                    <p id = "redHighScrapScore"> </p>
+                    <p id = "redLowScrapScore"> </p>
+                    <p id = "redVaultScrapScore"> </p>
+                    <p id = "redCoreScore"> </p>
+                    <p id = "redParkScore"> </p>
+                    <p id = "redFoulScore"> </p>
+                </div>
+
+                <div class = "BlueClass alliance">
+                    <h2 id = "blueAlliance"> Blue Alliance</h2>
+                    <div class = sidebyside>
+                        <h3 id = "blueAlliance1"> </h3>
+                        <h3 id = "blueAlliance2"> </h3>
+                    </div>
+                    <h3 id = "blueScore"> </h3>
+                    <p id = "blueLeaveScore"> </p>
+                    <p id = "blueHighScrapScore"> </p>
+                    <p id = "blueLowScrapScore"> </p>
+                    <p id = "blueVaultScrapScore"> </p>
+                    <p id = "blueCoreScore"> </p>
+                    <p id = "blueParkScore"> </p>
+                    <p id = "blueFoulScore"> </p>
+                </div>
+            </div>
+
+            <audio id = "autoStart" src = "AutoStart.wav"></audio>
+            <audio id = "autoEnd" src = "AutoEnd.wav"></audio>
+            <audio id = "endgameStart" src = "EndgameStart.wav"></audio>
+            <audio id = "teleopEnd" src = "TeleopEnd.wav"></audio>
+        </div>
+
+        <div id = "endMatch" style = "display:none">
+            <h1 id = "matchTitleEnd"> Match</h1>
+            <h1 id = "winner"> Winner</h1>
+
+            <div class = sidebyside>
+                <div class = "RedClass alliance">
+                    <h2 id = "redAlliance"> Red Alliance</h2>
+                    <div class = sidebyside>
+                        <h3 id = "redAlliance1End"> </h3>
+                        <h3 id = "redAlliance2End"> </h3>
+                    </div>
+                    <h3 id = "redEndScore"> </h3>
+                    <p id = "redEndLeaveScore"> </p>
+                    <p id = "redEndHighScrapScore"> </p>
+                    <p id = "redEndLowScrapScore"> </p>
+                    <p id = "redEndVaultScrapScore"> </p>
+                    <p id = "redEndCoreScore"> </p>
+                    <p id = "redEndParkScore"> </p>
+                    <p id = "redEndFoulScore"> </p>
+                    <p id = "redAutoRP"> Autonomous RP : N</p>
+                    <p id = "redScrapRP"> Scrap RP : N</p>
+                    <p id = "redEndRP"> Endgame RP : N</p>
+                    <p id = "redRP"> </p>
+                </div>
+
+                <div class = "BlueClass alliance">
+                    <h2 id = "blueAlliance"> Blue Alliance</h2>
+                    <div class = sidebyside>
+                        <h3 id = "blueAlliance1End"> </h3>
+                        <h3 id = "blueAlliance2End"> </h3>
+                    </div>
+                    <h3 id = "blueEndScore"> </h3>
+                    <p id = "blueEndLeaveScore"> </p>
+                    <p id = "blueEndHighScrapScore"> </p>
+                    <p id = "blueEndLowScrapScore"> </p>
+                    <p id = "blueEndVaultScrapScore"> </p>
+                    <p id = "blueEndCoreScore"> </p>
+                    <p id = "blueEndParkScore"> </p>
+                    <p id = "blueEndFoulScore"> </p>
+                    <p id = "blueAutoRP"> Autonomous RP : N</p>
+                    <p id = "blueScrapRP"> Scrap RP : N</p>
+                    <p id = "blueEndRP"> Endgame RP : N</p>
+                    <p id = "blueRP"></p>
+                </div>
+            </div>
+
+            <button id="matchSchedule">Match Schedule</button>
+        </div>
+
+        <script src = "index.js" type = "module"></script>
+        <script src = "IRCTeam.js"> </script>
+        <script src = "IRCMatch.js"> </script>
+    </body>
+</html>

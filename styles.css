@@ -1,0 +1,102 @@
+body {
+    background-color: #1e1e1e;
+    color: #eee;
+    text-align: center;
+    padding-top: 40px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 50px;
+    background-color: #434343;
+    
+    border: none;
+    border-radius: 24px;
+    padding: 20px 30px
+}
+
+input{
+    margin: 10px;
+    border: 1px solid #aaa;
+    background-color: #434343;
+    color: #eee;
+    border-radius: 12px;
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: background 0.2s;
+}
+
+button{
+    margin: 10px;
+    border: 1px solid #aaa;
+    background-color: #434343;
+    color: #eee;
+    border-radius: 12px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #5a5a5a;
+}
+
+button.removeButton:hover {
+    background-color: #8b0000;
+}
+
+.datatable{
+    display: grid;
+    grid-auto-flow: column;  /* place each item in the next column */
+    grid-auto-columns: 1fr;  /* each column is equal width */
+    column-gap: 20px;
+    padding: 5px 0;
+    margin: 10px;
+    border: none;
+    background-color: #434343;
+    color: #eee;
+    border-radius: 12px;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+.RED     { background-color: #C62828; color: white; }
+.ORANGE  { background-color: #EF6C00; color: white; }
+.YELLOW  { background-color: #F9A825; color: black; }
+.GREEN   { background-color: #2E7D32; color: white; }
+.BLUE    { background-color: #1565C0; color: white; }
+.PURPLE  { background-color: #6A1B9A; color: white; }
+.BLACK   { background-color: #212121; color: white; }
+.SILVER  { background-color: #B0BEC5; color: black; }
+.team    { font-size: 16; margin: 5px; border: none; border-radius: 8px; align-content: center;}
+
+.RedClass{
+    background-color: #a32020;
+}
+
+.BlueClass{
+    background-color: #2040a3;
+}
+
+.sidebyside{
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* two equal columns */
+    gap: 20px;
+    padding: 20px;
+}
+
+#sidebyside{
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* two equal columns */
+    gap: 20px;
+    padding: 20px;
+}
+
+.alliance{
+    border-radius: 24px;
+}
+
+.nobox{
+    background: none;
+}
