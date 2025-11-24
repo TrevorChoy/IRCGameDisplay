@@ -822,6 +822,7 @@ function startMatch(match){
 
 function runAuto(match){
     //play sound effect
+    displayTimer(autoLength);
     document.getElementById("autoStart").play();
     //set autoPeriod to true (used to account for scoring bonuses in auto)
     autoPeriod = true;
