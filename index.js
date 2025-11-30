@@ -429,11 +429,13 @@ function generateQMs(){
         var leastQMs = [];
         var alternatives = [];
         for(let i = 0; i < teamArray.length; i++){
-            if(teamArray[i].getNumQMs() == leastNumQMs) leastQMs.push(teamArray[i]);
+            if(teamArray[i].getNumQMs() == leastNumQMs) {leastQMs.push(teamArray[i]);
+            console.log("least")}
             else alternatives.push(teamArray[i]);
         }
         var selected = [];
         if(leastQMs.length >= 4){
+            console.log(leastQMs.length)
             shuffleArray(leastQMs)
             selected = leastQMs.slice(0, 4);
         }
@@ -446,8 +448,9 @@ function generateQMs(){
             }
         }
         for(let i = 0; i < selected.length; i++){
-            selected[i].incrementNumQMs()
+            selected[i].incrementNumQMs();
         }
+        if(leastQMs.length <= 4) leastNumQMs++;
         qmMatches.push(new IRCMatch(selected[0], selected[1], selected[2], selected[3]));
     }
     console.log(qmMatches);
