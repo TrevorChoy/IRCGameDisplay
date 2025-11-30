@@ -264,7 +264,6 @@ loadCompButton.addEventListener("click", async function(){
             teamArray.push(new IRCTeam(team.name, team.id, team.totalRP, team.matchesPlayed, team.numQMs));
         }
 
-        console.log(teamArray);
         const matchData = matchSnap.val();
         for(let i = 0; i < matchData.length; i++){
             //generic object with the data
@@ -280,7 +279,6 @@ loadCompButton.addEventListener("click", async function(){
             //an additional one is added because the array starts from 0 so it becomes a +2
             if(!(match.winner === "")) currentQMNumber = i + 2;
         }
-        console.log(qmMatches);
         numqms = numQMSnap.val();
 
         startSection.style.display = "none";
@@ -306,7 +304,6 @@ newCompButton.addEventListener("click", function(){
 
 addTeamButton.addEventListener("click", function(){
     teamArray.push(new IRCTeam(teamInputField.value));
-    console.log(teamArray);
     teamInputField.value = "";
     renderList();
 });
@@ -385,7 +382,6 @@ confirmAlliancesButton.addEventListener("click", function(){
 startFinalMatchButton.addEventListener("click", function(){
     finalsDisplaySection.style.display = "none";
     playMatchSection.style.display = "block";
-    console.log(currentFinalMatchNumber);
     startMatch(finalMatches[currentFinalMatchNumber - 1]);
     currentFinalMatchNumber++;
 });
@@ -429,14 +425,12 @@ function generateQMs(){
         var leastQMs = [];
         var alternatives = [];
         for(let i = 0; i < teamArray.length; i++){
-            if(teamArray[i].getNumQMs() == leastNumQMs) {leastQMs.push(teamArray[i]);
-            console.log("least")}
+            if(teamArray[i].getNumQMs() == leastNumQMs) leastQMs.push(teamArray[i]);
             else alternatives.push(teamArray[i]);
         }
         var selected = [];
         if(leastQMs.length >= 4){
-            console.log(leastQMs.length)
-            shuffleArray(leastQMs)
+            shuffleArray(leastQMs);
             selected = leastQMs.slice(0, 4);
         }
         else{
@@ -453,7 +447,6 @@ function generateQMs(){
         if(leastQMs.length <= 4) leastNumQMs++;
         qmMatches.push(new IRCMatch(selected[0], selected[1], selected[2], selected[3]));
     }
-    console.log(qmMatches);
 }
 
 function shuffleArray(arr) {
@@ -469,7 +462,6 @@ function displayQMs(){
     matchDiv.innerHTML = "";
     rankingsDiv.innerHTML = "";
 
-    console.log("inside displayqms " + teamArray);
     teamArray = teamArray.sort((a, b) => b.getAvgRP() - a.getAvgRP());
     teamArray.forEach((team, index) => {
         const container = document.createElement("div");
